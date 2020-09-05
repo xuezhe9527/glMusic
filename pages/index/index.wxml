@@ -50,6 +50,6 @@
          </view>      
       </scroll-view>
       <!-- <text>111</text> -->
-      <NavHeader title="推荐歌曲2" word="为你推荐歌曲2"></NavHeader>
+      <NavHeader title="推荐歌曲3" word="为你推荐歌曲3"></NavHeader>
     </view>
 </view>
