@@ -1,0 +1,11 @@
+{
+   "pages": [
+      "pages/index/index"
+   ],
+   "window": {
+      "navigationBarBackgroundColor": "#d43c33",
+      "navigationBarTextStyle": "white",
+      "navigationBarTitleText": "谷粒音乐"
+   },
+   "sitemapLocation": "sitemap44.json"
+}

@@ -1,0 +1,55 @@
+<!-- 最外层容器 -->
+<view class="indexContainer">
+   <!-- banner容器 -->
+   <swiper class="swiperWrapper"  indicator-active-color="#d43c33" circular
+            indicator-dots indicator-color="ivory">
+      <swiper-item class="swiperItem" wx:for="{{bannerList}}" wx:key="bannerId">
+         <!-- <image src="/static/images/nvsheng.jpg"></image> -->
+         <image src="{{item.pic}}"></image>
+      </swiper-item>
+      
+   </swiper>
+
+   <!-- 头部导航 -->
+   <view class="header">
+      <view class="headerItem">
+         <text class="iconfont icon-meirituijian-"></text>
+         <text >每日推荐</text>
+      </view>
+      <view class="headerItem">
+         <text class="iconfont icon-gedan1"></text>
+         <text >歌单</text>
+      </view>
+      <view class="headerItem">
+         <text class="iconfont icon-icon-ranking"></text>
+         <text >排行版</text>
+      </view>
+      <view class="headerItem">
+         <text class="iconfont icon-diantai"></text>
+         <text >电台</text>
+      </view>
+      <view class="headerItem">
+         <text class="iconfont icon-zhiboguankanliangbofangsheyingshexiangjixianxing"></text>
+         <text >直播</text>
+      </view>
+   </view>
+
+   <!-- 推荐部分 -->
+   <view class="recommendContaier">
+      <!-- 公共组件 -->
+      <NavHeader title="推荐歌曲1" word="为你推荐歌曲1"></NavHeader>
+      
+      <!-- wx:for-item :给遍历的对象起别名 -->
+      <!-- wx:for-index：给遍历的对象id起别名 -->
+
+      <!-- scroll-view的bug，虽然flex之后会横向，但还是横向布局，所以占据高度，解决办法需要给他设置高度 -->
+      <scroll-view class="scrollContainer" enable-flex scroll-x>
+         <view class="scrollItem" enable-flex wx:for="{{recommendList}}" wx:for-item="recommendItem" wx:for-index="recommendId" wx:key="id">
+            <image src="{{recommendItem.picUrl}}"></image>
+            <text>{{recommendItem.name}}</text>
+         </view>      
+      </scroll-view>
+      <!-- <text>111</text> -->
+      <NavHeader title="推荐歌曲2" word="为你推荐歌曲2"></NavHeader>
+    </view>
+</view>

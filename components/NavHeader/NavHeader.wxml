@@ -1,0 +1,9 @@
+<view class="recommondBar">
+   <!-- <text class="title">推荐歌曲</text> -->
+   <text class="title">{{title}}</text>
+   <view class="moreContainer">
+      <!-- <text class="left">为你精心推荐</text> -->
+      <text class="left">{{word}}</text>
+      <text class="more">查看更多</text>
+   </view>
+</view>
