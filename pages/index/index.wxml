@@ -1,36 +1,35 @@
 <!-- 最外层容器 -->
 <view class="indexContainer">
    <!-- banner容器 -->
-   <swiper class="swiperWrapper"  indicator-active-color="#d43c33" circular
-            indicator-dots indicator-color="ivory">
+   <swiper class="swiperWrapper" indicator-active-color="#d43c33" circular indicator-dots indicator-color="ivory">
       <swiper-item class="swiperItem" wx:for="{{bannerList}}" wx:key="bannerId">
          <!-- <image src="/static/images/nvsheng.jpg"></image> -->
          <image src="{{item.pic}}"></image>
       </swiper-item>
-      
+
    </swiper>
 
    <!-- 头部导航 -->
    <view class="header">
       <view class="headerItem">
          <text class="iconfont icon-meirituijian-"></text>
-         <text >每日推荐</text>
+         <text>每日推荐</text>
       </view>
       <view class="headerItem">
          <text class="iconfont icon-gedan1"></text>
-         <text >歌单</text>
+         <text>歌单</text>
       </view>
       <view class="headerItem">
          <text class="iconfont icon-icon-ranking"></text>
-         <text >排行版</text>
+         <text>排行版</text>
       </view>
       <view class="headerItem">
          <text class="iconfont icon-diantai"></text>
-         <text >电台</text>
+         <text>电台</text>
       </view>
       <view class="headerItem">
          <text class="iconfont icon-zhiboguankanliangbofangsheyingshexiangjixianxing"></text>
-         <text >直播</text>
+         <text>直播</text>
       </view>
    </view>
 
@@ -38,7 +37,7 @@
    <view class="recommendContaier">
       <!-- 公共组件 -->
       <NavHeader title="推荐歌曲1" word="为你推荐歌曲1"></NavHeader>
-      
+
       <!-- wx:for-item :给遍历的对象起别名 -->
       <!-- wx:for-index：给遍历的对象id起别名 -->
 
@@ -47,9 +46,32 @@
          <view class="scrollItem" enable-flex wx:for="{{recommendList}}" wx:for-item="recommendItem" wx:for-index="recommendId" wx:key="id">
             <image src="{{recommendItem.picUrl}}"></image>
             <text>{{recommendItem.name}}</text>
-         </view>      
+         </view>
       </scroll-view>
       <!-- <text>111</text> -->
-      <NavHeader title="推荐歌曲3" word="为你推荐歌曲3"></NavHeader>
-    </view>
+      <!-- <NavHeader title="推荐歌曲3" word="为你推荐歌曲3"></NavHeader> -->
+   </view>
+
+   <!-- 排行版部分 -->
+   <view class="PHBContainer">
+      <NavHeader title="排行榜" word="热歌风向标" />
+      <view class="musicSwiperContainer">
+         <swiper class="swiperSelf" next-margin="50rpx">
+             <swiper-item class="swiperItem" wx:for="{{hotList}}" wx:for-item="outItem" wx:key="name">
+               <!-- <view>云歌曲热歌榜 > </view> -->
+               <view>{{outItem.name}}  > </view>
+               <view class="musicItem" wx:for="{{outItem.musicList}}" wx:for-item="musicItem" wx:for-index="musicIndex" wx:key="id">
+                  <!-- <image src="/static/images/nvsheng.jpg"></image>
+                  <view class="musicNum">1</view>
+                  <view class="musicName">隔岸</view> -->
+                  <image src="{{musicItem.al.picUrl}}"></image>
+                  <view class="musicNum">{{musicIndex+1}}</view>
+                  <!-- <view class="musicName">{{musicItem.al.name}}</view> -->
+                  <view class="musicName">哇哇哇吊袜带的都喝的喝的的u的的达瓦达瓦达瓦达瓦达瓦大屋顶</view>
+               </view>              
+            </swiper-item>       
+         </swiper>
+      </view>
+   </view>
+
 </view>
