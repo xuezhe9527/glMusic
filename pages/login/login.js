@@ -44,7 +44,7 @@ Page({
          wx.showToast({
             title: '登陆成功，稍后跳转至个人中心',
             icon:'success',
-            //
+            //延迟2000后跳转
             duration:2000,
             success(){
                wx.switchTab({
