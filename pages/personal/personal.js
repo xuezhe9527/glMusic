@@ -1,4 +1,5 @@
 // pages/personal/personal.js
+import request from '../../utils/request.js'
 Page({
 
    /**
@@ -7,7 +8,8 @@ Page({
    data: {
       moveDistance:0,
       transResult:"none",
-      playList:null
+      playList:null,
+      userInfo:{}
    },
    //手指按下
    handleStart(event){
@@ -37,9 +39,10 @@ Page({
          transResult: "transform 1s linear" //回去的时候使用动画效果
       })
    },
-   
+    //跳转至登录页面
    toLoginPage(){
-      //跳转至登录页面
+      // 如果已经登陆 不允许再跳转至登陆页面
+      if(this.data.userInfo.nickname)return;
       wx.navigateTo({
          url: '/pages/login/login',
       })
@@ -48,8 +51,20 @@ Page({
    /**
     * 生命周期函数--监听页面加载
     */
-   onLoad: function (options) {
-
+   onLoad:  function (options) {
+      // 不应该在onload请求，因为onload只在初始渲染时执行一次
+      // wx.getStorage({
+      //    key: 'userInfo',
+      //    success: async ({data})=> {
+      //       let objData = JSON.parse(data)
+      //       console.log(objData)
+      //       this.setData({
+      //          userInfo:objData
+      //       })
+      //       let res = await request('user/record', { uid:objData.userId,type:1} )
+      //       console.log(res)
+      //    },
+      // })
    },
 
    /**
@@ -62,7 +77,20 @@ Page({
    /**
     * 生命周期函数--监听页面显示
     */
-   onShow: function () {
+   onShow: async function () {
+      let userInfo = JSON.parse(wx.getStorageSync("userInfo") ||"{}")
+      //   console.log(result)
+      this.setData({
+         userInfo
+         })
+      if(userInfo){
+         let res = await request('/user/record',{uid:userInfo.userId,type:0})
+         // console.log(res)
+         this.setData({
+            // playList:res.weekData  //本周播放记录
+            playList:res.allData         //所有播放记录
+         })
+      }
 
    },
 

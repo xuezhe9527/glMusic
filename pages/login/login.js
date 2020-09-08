@@ -28,8 +28,12 @@ Page({
    async toLogin(){
       let {phone,password} = this.data
       
-      const result = await request('/login/cellphone',{phone,password})
-      console.log(result)
+      const result = await request('/login/cellphone',{
+            phone,
+            password,
+            isLogin:true   //登录时额外添加的字段
+         })
+
       if(result.code===400){
          wx.showToast({
             title: '手机号错误',
@@ -41,6 +45,9 @@ Page({
             icon:'none'
          })
       }else if(result.code===200){
+         // console.log(result)
+         // wx.setStorageSync("userInfo", JSON.stringify(result.profile))
+         wx.setStorageSync("userInfo", JSON.stringify(result.profile))
          wx.showToast({
             title: '登陆成功，稍后跳转至个人中心',
             icon:'success',

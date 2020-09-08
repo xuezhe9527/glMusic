@@ -88,7 +88,7 @@
 }
 .PHBContainer .musicSwiperContainer .swiperSelf{
    height: 624rpx;
-   background: pink;
+   /* background: pink; */
 }
 
 /* .PHBContainer .musicSwiperContainer{} */

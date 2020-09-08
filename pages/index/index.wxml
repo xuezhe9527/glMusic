@@ -66,8 +66,8 @@
                   <view class="musicName">隔岸</view> -->
                   <image src="{{musicItem.al.picUrl}}"></image>
                   <view class="musicNum">{{musicIndex+1}}</view>
-                  <!-- <view class="musicName">{{musicItem.al.name}}</view> -->
-                  <view class="musicName">哇哇哇吊袜带的都喝的喝的的u的的达瓦达瓦达瓦达瓦达瓦大屋顶</view>
+                  <view class="musicName">{{musicItem.al.name}}</view>
+                  <!-- <view class="musicName">哇哇哇吊袜带的都喝的喝的的u的的达瓦达瓦达瓦达瓦达瓦大屋顶</view> -->
                </view>              
             </swiper-item>       
          </swiper>

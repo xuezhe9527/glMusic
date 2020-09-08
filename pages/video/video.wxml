@@ -1,2 +1,52 @@
-<!--pages/video/video.wxml-->
-<text>pages/video/video.wxml</text>
+<view class="videoContainer">
+   <!-- 头部搜索部分 -->
+   <view class="header">
+      <image src="/static/images/logo.png"></image>
+         <input placeholder="光辉岁月" placeholder-class="place"></input>
+      <image src="/static/images/logo.png"></image>
+   </view>
+
+   <!-- 导航栏部分 -->
+   <!-- scroll-into-view的值必须包括某个选项的id值，但是只能以字母开头 --> 
+   <scroll-view class="scrollView" enable-flex scroll-x scroll-into-view="{{'xxx'+id}}">
+      <!-- <view class="scrollItem active">现场直播</view> -->
+      <view class="scrollItem {{item.id===id? 'active':''}}" wx:for="{{videoGroup}}" wx:key="id" 
+      bindtap="changeId"  id="{{'xxx'+item.id}}" scroll-with-animation
+      data-id="{{item.id}}"
+      >{{item.name}}</view> 
+   </scroll-view>
+
+   <!-- 视频列表部分 -->
+   <!-- refresher-enabled   开启scroll-view的下拉刷新
+      refresher-triggered="{isFinish}" 是否还在下拉状态 false 不是   true 是
+      bindrefresherrefresh="pullUpdate" 绑定下拉刷新要执行的执行方法
+      bindscrolltolower	绑定下拉到底的事件
+   -->
+   <scroll-view class="videoList" scroll-y refresher-enabled refresher-triggered="{{isFinish}}"
+   bindrefresherrefresh="pullUpdate"  bindscrolltolower="scrollToLower"	>
+    <view class="videoItem" wx:for="{{videoList}}" wx:key="id" >
+      <video class="common" src="{{item.data.urlInfo.url}}"></video>     
+      <!-- <image id="{{item.data.vid}}" class="common" bindtap="handleTrigger" src="{{item.data.coverUrl}}"></image> -->
+
+      <view class="content">{{item.data.title}}</view>
+
+      <view class="footer">
+        <image class="avatar" src="{{item.data.creator.avatarUrl}}"></image>
+        <text class="nickName">{{item.data.creator.nickname}}</text>
+        <view class="comments_praised">
+          <text class="item">
+            <text class="iconfont icon-buoumaotubiao15"></text>
+            <text class="count">{{item.data.praisedCount}}</text>
+          </text>
+          <text class="item">
+            <text class="iconfont icon-pinglun1"></text>
+            <text class="count">{{item.data.commentCount}}</text>
+          </text>
+          <button open-type="share" data-title="{{item.data.title}}" data-imageurl="{{item.data.coverUrl}}" class="item btn">
+            <text class="iconfont icon-gengduo"></text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
