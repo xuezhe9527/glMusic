@@ -1,0 +1,37 @@
+<view class="recommendContainer">
+  <view class="header">
+    <image src="/static/images/recommendSong/recommendSong.jpg"></image>
+    <view class="date">
+      <text class="day">{{day}} /</text>
+      <text class="month">{{month}}</text>
+    </view>
+  </view>
+
+  <!-- 推荐列表 -->
+  <view class="recommendList">
+    <view class="listHeader">
+      <text class="playAll">播放全部</text>
+      <text class="changeMore">多选</text>
+    </view>
+
+    <!-- 音乐列表 -->
+    <scroll-view class="scrollView" scroll-y>
+      <view class="recommendItem" wx:for="{{recommendList}}" wx:key="id" 
+      bindtap="toSongPage"
+      data-id="{{item.id}}"     
+      >
+      <!-- data-item="item"  不可行，因为这样传递的参数即使转成字符串也太大了，url有限制
+      data-index="index" 可行 -->
+      
+        <image src="{{item.album.picUrl}}"></image>
+        <view class="musicContent">
+          <text class="musicName">{{item.name}}</text>
+          <text class="author">{{item.artists[0].name}}</text>
+        </view>
+        <view class="radio">
+          <text class="iconfont icon-gengduo"></text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

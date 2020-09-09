@@ -10,12 +10,30 @@ Page({
       videoGroup:[],
       videoList:[],
       id:0,
-      isFinish:false
+      isFinish:false,
+      vid: "videoC55D42DD52176B4A8170860FBC4C2018" //上一个视频的videoid
+   },
+
+   //点击图片播放
+   handleImageTap(event){
+      let vid = event.target.id
+      this.setData({vid})
+      let videoContext = wx.createVideoContext(vid)
+      videoContext.play()
+   },
+   //点击video播放逻辑(这个方法可以与handleImageTap相结合，这个方法的功能基本用不上了)
+   handlePlay(event){
+      // console.log(event)
+      let vid = event.target.id
+      this.videoContext && vid !== this.data.vid && this.videoContext.pause() 
+      this.setData({
+         vid
+      })
+      this.videoContext = wx.createVideoContext(vid)     
    },
    //下拉到底的操作
    scrollToLower(){
-      console.log("scrollToLower")
-      
+      console.log("scrollToLower")   
       wx.showLoading({
          title: '正在努力加载中',
       })
@@ -116,7 +134,18 @@ Page({
    /**
     * 用户点击右上角分享
     */
-   onShareAppMessage: function () {
-
+   onShareAppMessage: function (shareObj) {
+      // console.log(shareObj)
+      let { imageurl,title } = shareObj.target.dataset
+      
+      if(shareObj.from === "button"){
+         return{
+            title,
+            imageUrl:imageurl,
+            path:'/pages/video/video'
+         }
+      }else{
+         console.log("小程序左上角全局页面分享")
+      }
    }
 })

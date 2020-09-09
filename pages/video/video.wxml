@@ -1,7 +1,7 @@
 <view class="videoContainer">
    <!-- 头部搜索部分 -->
    <view class="header">
-      <image src="/static/images/logo.png"></image>
+      <image src="/static/images/video/video.jpg"></image>
          <input placeholder="光辉岁月" placeholder-class="place"></input>
       <image src="/static/images/logo.png"></image>
    </view>
@@ -25,8 +25,20 @@
    <scroll-view class="videoList" scroll-y refresher-enabled refresher-triggered="{{isFinish}}"
    bindrefresherrefresh="pullUpdate"  bindscrolltolower="scrollToLower"	>
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id" >
-      <video class="common" src="{{item.data.urlInfo.url}}"></video>     
-      <!-- <image id="{{item.data.vid}}" class="common" bindtap="handleTrigger" src="{{item.data.coverUrl}}"></image> -->
+      <video class="common" 
+         src="{{item.data.urlInfo.url}}" 
+         id="{{'video'+item.data.vid}}"
+         bindplay="handlePlay"
+         wx:if="{{'video'+item.data.vid === vid}}"
+         poster="{{item.data.coverUrl}}"
+      ></video>     
+      <image id="{{'video'+item.data.vid}}" 
+         class="common" 
+         bindtap="handleTrigger" 
+         src="{{item.data.coverUrl}}" 
+         bindtap="handleImageTap"
+         wx:else
+      ></image>
 
       <view class="content">{{item.data.title}}</view>
 

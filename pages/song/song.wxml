@@ -1,0 +1,27 @@
+<view class="songContainer {{isplaying?'isplaying':''}}">
+   <!-- <text class="name">伍六一</text> -->
+   <text class="name">{{songObj.ar[0].name}}</text>
+   <view class="keng"></view>
+   <image class="needle" src="/static/images/song/needle.png"></image>
+   <view class="discContainer">
+      <image class="disc" src="/static/images/song/disc.png"></image>
+      <!-- <image class="discImg" src="/static/images/nvsheng.jpg"></image> -->
+      <image class="discImg" src="{{songObj.al.picUrl}}"></image>
+   </view>
+
+
+   <!-- 底部播放选项区域 -->
+  <view class="musicControl">
+    <text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle" ></text>
+    <text class="iconfont icon-shangyishou" id="pre"></text>
+    <!-- <text class="iconfont {{isplaying?'icon-zanting':'icon-bofang'}} big" bindtap="handlePlay"></text> -->
+    <text class="iconfont {{isplaying?'icon-zanting':'icon-bofang'}} big" bindtap="handlePlay"></text>
+    <text class="iconfont icon-next" id="next"></text>
+    <text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
+  </view>
+</view>
+
+
+
+
+

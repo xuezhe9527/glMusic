@@ -4,11 +4,12 @@
 }
 .videoContainer .header{
    display: flex;
-   margin: 20rpx;
+   margin: 20rpx 0rpx;
 }
 .videoContainer .header image{
    width: 60rpx;
    height: 60rpx;
+   margin: 0rpx 20rpx;
 }
 .videoContainer .header input{
    border: 1rpx solid #eee;
@@ -17,6 +18,7 @@
    line-height: 60rpx;
    margin: 0 20 rpx;
    border-radius: 4rpx;
+   
    
 }  
 .videoContainer .header .place{
@@ -44,6 +46,7 @@
 
 .videoList .common {
   width: 100%;
+  /* width: 99%; */
   /* height: 360rpx; */
   height:52.875vw;
   border-radius: 10rpx;
