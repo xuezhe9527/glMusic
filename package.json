@@ -1,0 +1,24 @@
+{
+  "name": "glmusic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "moment": "^2.27.0",
+    "pubsub-js": "^1.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuezhe9527/glMusic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuezhe9527/glMusic/issues"
+  },
+  "homepage": "https://github.com/xuezhe9527/glMusic#readme"
+}

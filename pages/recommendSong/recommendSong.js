@@ -1,5 +1,6 @@
 // pages/recommendSong/recommendSong.js
 import request from '../../utils/request.js'
+import PubSub from 'pubsub-js'
 Page({
 
    /**
@@ -8,10 +9,15 @@ Page({
    data: {
       day:"",
       month:"",
-      recommendList:[]
+      recommendList:[],
+      currentIndex:null,
    },
    toSongPage(event){
-      let {id} = event.currentTarget.dataset
+      let {id,index} = event.currentTarget.dataset
+      //在跳转至song页面之前应该保存下当前的index
+      this.setData({
+         currentIndex:index
+      })
       wx.navigateTo({
          // url: '/pages/song/song',
          url: '/pages/song/song?songId='+id
@@ -22,6 +28,29 @@ Page({
     * 生命周期函数--监听页面加载
     */
    onLoad: async function (options) {
+      PubSub.subscribe("switchSong",(msg,data)=>{
+         // console.log("11",data)
+         let { currentIndex, recommendList} = this.data
+         if(data==="next"){
+            if(currentIndex === recommendList.length-1){
+               currentIndex = 0
+            }else{
+               currentIndex++
+            }           
+         }else{
+            if(currentIndex===0){
+               currentIndex = recommendList.length-1
+            }else{
+               currentIndex--
+            }          
+         }
+
+         this.setData({
+            currentIndex
+         })
+         //发布消息，广播切换之后的id
+         PubSub.publish("changeAudioId",recommendList[currentIndex].id)
+      })
       this.setData({
          day:new Date().getDate(),
          month:new Date().getMonth() + 1

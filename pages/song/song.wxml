@@ -1,3 +1,4 @@
+<wxs src="./myFilter.wxs" module="filter"/>
 <view class="songContainer {{isplaying?'isplaying':''}}">
    <!-- <text class="name">伍六一</text> -->
    <text class="name">{{songObj.ar[0].name}}</text>
@@ -9,14 +10,28 @@
       <image class="discImg" src="{{songObj.al.picUrl}}"></image>
    </view>
 
+     <!-- 进度条 -->
+  <view class="audioContainer">
+    <text>{{filter.timeFilter(currentTime,'s')}}</text>
+    <!-- <text>{{currentTime}}</text> -->
+    <!-- <text>00:00</text> -->
+    <view class="barContainer">
+      <view class="audio-current-time" style="width:{{scale}}%">
+        <view class="audio-time-point"></view>
+      </view>
+    </view>
+    <!-- <text>{{filter.timeFilter(durationTime,'ms')}}</text> -->
+    <text>{{durationTime}}</text>
+    <!-- <text>04:01</text> -->
+  </view>
 
    <!-- 底部播放选项区域 -->
   <view class="musicControl">
     <text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle" ></text>
-    <text class="iconfont icon-shangyishou" id="pre"></text>
+    <text class="iconfont icon-shangyishou" id="pre" bindtap="switchSong"></text>
     <!-- <text class="iconfont {{isplaying?'icon-zanting':'icon-bofang'}} big" bindtap="handlePlay"></text> -->
     <text class="iconfont {{isplaying?'icon-zanting':'icon-bofang'}} big" bindtap="handlePlay"></text>
-    <text class="iconfont icon-next" id="next"></text>
+    <text class="iconfont icon-next" id="next" bindtap="switchSong"></text>
     <text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
   </view>
 </view>

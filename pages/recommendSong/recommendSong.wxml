@@ -18,7 +18,8 @@
     <scroll-view class="scrollView" scroll-y>
       <view class="recommendItem" wx:for="{{recommendList}}" wx:key="id" 
       bindtap="toSongPage"
-      data-id="{{item.id}}"     
+      data-id="{{item.id}}"   
+      data-index="{{index}}"  
       >
       <!-- data-item="item"  不可行，因为这样传递的参数即使转成字符串也太大了，url有限制
       data-index="index" 可行 -->
